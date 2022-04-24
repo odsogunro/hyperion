@@ -1,6 +1,18 @@
 DAMI - TODO: work from here for now
 (hyperion00) dkazeem@c01:/export/c01/dkazeem/hyperion/egs/voxceleb/vctk$ 
 
+you just need to copy the voceleb recipe
+9:52
+change the data preparation scripts which are called in the step 001
+9:53
+and then change the dataset names that are used in step 2, 10, 11, since you will be training on vctk and not in voxceleb
+9:53
+and you will aslo need to change the step 40
+9:54
+you will change the PLDA evaluation, which is used for verification task by something diffferent more suitable for a classification task
+9:55
+but from step 1 to 30, it all almost the same as in the voxceleb
+
 under local/
 
 no 
