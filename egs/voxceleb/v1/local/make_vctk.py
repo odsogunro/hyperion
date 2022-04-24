@@ -10,32 +10,6 @@ import pathlib as pl
 import pandas as pd
 import sklearn.model_selection as skms
 
-# # move to main
-# vctk_root = "/export/corpora5/VCTK-Corpus"
-# all = "/*"
-# speaker_info = "/speaker-info.txt"
-# text_files = "/txt"
-# wave_files = "/wav48"
-# current_dir = "."
-
-# test_wav = sorted(gl.glob(vctk_root + wave_files + all + all))
-# test_dir = sorted(gl.glob(vctk_root + wave_files + all))
-
-# # TODO: resolve - ParserError: Error tokenizing data. C error: Expected 5 fields in line 89, saw 6
-# # Skipping line 89: Expected 5 fields in line 89, saw 6. Error could possibly be due to quotes being ignored when a multi-char delimiter is used.
-# #   ID AGE GENDER ACCENTS REGION
-# #   326 26 M Australian English Sydney
-# test_spkr_info = pd.read_csv(
-#     vctk_root + speaker_info, delimiter="\s+", error_bad_lines=False, engine="python"
-# )
-
-# test_spkr_info_stats = test_spkr_info.info()
-# test_spkr_info_accent_cnts = test_spkr_info['ACCENTS'].value_counts()
-# ignore = ['SouthAfrican', 'Indian', 'Welsh', 'EnglishSE', 'Australian', 'EnglishSurrey', 'NewZealand']
-# test_spkr_info = test_spkr_info.query('ACCENTS != (@ignore)')
-# # move to main
-
-
 # '/export/corpora5/VCTK-Corpus/wav48/p225/p225_001.wav'
 def make_wav_scp(wave_files_list, spk_info_df, file_path="wav.scp"):
     """
