@@ -1,3 +1,6 @@
+DAMI - TODO: work from here for now
+(hyperion00) dkazeem@c01:/export/c01/dkazeem/hyperion/egs/voxceleb/vctk$ 
+
 under local/
 
 no 
