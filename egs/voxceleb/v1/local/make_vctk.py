@@ -1,4 +1,5 @@
-# ...
+#!/usr/bin/env python3
+# chmod +x make_vctk.py
 # date: 2022 spring - 20220422
 # author: olorundamilola 'dami' kazeem
 
@@ -334,7 +335,7 @@ def data_split_stratified_kfold(
         make_utt2spk(wav_dirs, X_validation, file_path=utt2spk) # 3
 
         utt2accent = "utt2accent"
-        utt2accent = pl.Path(kfold_dir_validation / utt2accent) # data/0/train/utt2accent
+        utt2accent = pl.Path(kfold_dir_validation / utt2accent) # data/0/validation/utt2accent
         make_utt2accent(wav_dirs, X_validation, file_path=utt2accent) # 4
         
 
@@ -363,7 +364,7 @@ def data_split_stratified_kfold(
         
         utt2spk = "utt2spk"
         utt2spk = pl.Path(kfold_dir_test / utt2spk)
-        make_utt2spk(wav_dirs, X_tes, file_path=utt2spk) # 3
+        make_utt2spk(wav_dirs, X_test, file_path=utt2spk) # 3
 
         utt2accent = "utt2accent"
         utt2accent = pl.Path(kfold_dir_test / utt2accent) # data/0/test/utt2accent
