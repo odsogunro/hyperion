@@ -1,11 +1,5 @@
 torch>=1.9.0
-# DAMI - TODO: Done 
-# - run_002_compute_evad.sh
-# ImportError: Numba needs NumPy 1.20 or less
-# Accounting: time=41 threads=1
-# Finished at Sun Apr 24 13:09:45 EDT 2022 with status 1
-# numpy>=1.18.1
-numpy>=1.18.1, <=1.20 
+numpy<=1.20,>=1.18.1
 h5py>=2.10.0
 pysoundfile>=0.9.0
 matplotlib>=3.1.3

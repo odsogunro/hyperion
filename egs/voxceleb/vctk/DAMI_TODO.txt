@@ -1,3 +1,25 @@
+
+DAMI - WORKING THRU ISSUES
+
+# DAMI - TODO: Done
+# - run_002_compute_evad.sh
+# ImportError: Numba needs NumPy 1.20 or less
+# Accounting: time=41 threads=1
+# Finished at Sun Apr 24 13:09:45 EDT 2022 with status 1
+# numpy>=1.18.1
+
+Building wheels for collected packages: fairscale
+  Building wheel for fairscale (PEP 517) ... done
+  Created wheel for fairscale: filename=fairscale-0.4.4-py3-none-any.whl size=292856 sha256=987be8b365071efc856e0b7e26218677720db3e23090aacb197925b3de6cdb8b
+  Stored in directory: /home/dkazeem/.cache/pip/wheels/b3/c3/6e/3fca67aaef3657c2266e9ee439b54f534f05967cd8774cc65b
+Successfully built fairscale
+Installing collected packages: numpy, torch, fairscale, hyperion-ml
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.21.2
+
+
+
+
 DAMI - TODO: work from here for now
 (hyperion00) dkazeem@c01:/export/c01/dkazeem/hyperion/egs/voxceleb/vctk$ 
 
