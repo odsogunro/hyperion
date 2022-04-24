@@ -1,3 +1,16 @@
+under local/
+
+no 
+- attack analysis
+- voxceleb
+
+just need 
+- rirs, /export/c01/dkazeem/hyperion/egs/voxceleb/vctk/local/make_rirs_data.sh 
+- musan, /export/c01/dkazeem/hyperion/egs/voxceleb/vctk/local/make_musan.sh  
+- ...
+
+
+
 DAMI - TODO: I should be able to remove the symlink here.
 - THIS points to voxceleb v1 local/
 - I need a local/ to keep the script 
