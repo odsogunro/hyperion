@@ -57,7 +57,7 @@ plda_aug_config=conf/reverb_noise_aug.yaml
 plda_num_augs=6
 if [ $plda_num_augs -eq 0 ]; then
     # plda_data=voxceleb2cat_train
-    plda_data=
+    plda_data=$train
 else
     plda_data=voxceleb2cat_train_augx${plda_num_augs}
 fi

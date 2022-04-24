@@ -25,7 +25,9 @@ xvector_dir=exp/xvectors/$nnet_name
 
 if [ $stage -le 1 ]; then
     # Extract xvectors for training LDA/PLDA
-    for name in voxceleb2cat_train
+    # for name in voxceleb2cat_train
+
+	for name in 0/train
     do
 	if [ $plda_num_augs -eq 0 ]; then
     	    steps_xvec/extract_xvectors_from_wav.sh --cmd "$xvec_cmd" --nj 100 ${xvec_args} \
@@ -47,7 +49,8 @@ fi
 
 if [ $stage -le 2 ]; then
     # Extracts x-vectors for evaluation
-    for name in voxceleb1_test 
+    # for name in voxceleb1_test 
+	for name in 0/validation 0/test 
     do
 	num_spk=$(wc -l data/$name/spk2utt | awk '{ print $1}')
 	nj=$(($num_spk < 100 ? $num_spk:100))
