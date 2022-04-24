@@ -25,3 +25,5 @@ librosa>=0.8.1
 black
 twine
 wheel
+# DAMI - added for development
+ipykernel
