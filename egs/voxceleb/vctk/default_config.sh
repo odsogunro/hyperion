@@ -9,8 +9,17 @@ feat_type=fbank80_stmn
 vad_config=conf/vad_16k.yaml
 
 # x-vector training 
-# DAMI - 
-nnet_data=voxceleb2cat_train
+# DAMI - ...
+# DAMI - TODO: need to update this to data/#/train with a loop 
+  	# to go through #'s from 0 to n-1 kfolds. first, this test run.
+
+train=0/train 
+validation=0/validation
+test=0/test
+
+# nnet_data=voxceleb2cat_train
+# nnet_data=0/train
+nnet_data=$train
 nnet_num_augs=6
 aug_opt="--train-aug-cfg conf/reverb_noise_aug.yaml --val-aug-cfg conf/reverb_noise_aug.yaml"
 
@@ -47,7 +56,8 @@ nnet=$nnet_dir/model_ep0070.pth
 plda_aug_config=conf/reverb_noise_aug.yaml
 plda_num_augs=6
 if [ $plda_num_augs -eq 0 ]; then
-    plda_data=voxceleb2cat_train
+    # plda_data=voxceleb2cat_train
+    plda_data=
 else
     plda_data=voxceleb2cat_train_augx${plda_num_augs}
 fi

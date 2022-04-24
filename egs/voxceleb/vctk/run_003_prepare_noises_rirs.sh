@@ -21,6 +21,9 @@ if [ $stage -le 1 ]; then
     # suitable for augmentation.
     local/make_musan.sh $musan_root 16 data
     
+
+    # DAMI - TODO: should I update the storage name here. 
+    # --storage_name voxceleb-v1.1-04_24_15_24
     for name in musan_noise musan_music
     do
 	steps_xvec/preprocess_audios_for_nnet_train.sh --nj 10 --cmd "$train_cmd" \

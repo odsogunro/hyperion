@@ -1,5 +1,41 @@
+DAMI - ...
+
+(hyperion00) dkazeem@c01:/export/c01/dkazeem/hyperion/egs/voxceleb/vctk$ ./run_003_prepare_noises_rirs.sh
+Preparing data/musan...
+In music directory, processed 645 files; 0 had missing wav data
+In speech directory, processed 426 files; 0 had missing wav data
+In noise directory, processed 930 files; 0 had missing wav data
+utils/fix_data_dir.sh: file data/musan/utt2spk is not in sorted order or not unique, sorting it
+utils/fix_data_dir.sh: file data/musan/wav.scp is not in sorted order or not unique, sorting it
+fix_data_dir.sh: kept all 2001 utterances.
+fix_data_dir.sh: old files are kept in data/musan/.backup
+utils/subset_data_dir.sh: reducing #utt from 2001 to 645
+utils/subset_data_dir.sh: reducing #utt from 2001 to 426
+utils/subset_data_dir.sh: reducing #utt from 2001 to 930
+fix_data_dir.sh: kept all 645 utterances.
+fix_data_dir.sh: old files are kept in data/musan_music/.backup
+fix_data_dir.sh: kept all 426 utterances.
+fix_data_dir.sh: old files are kept in data/musan_speech/.backup
+fix_data_dir.sh: kept all 930 utterances.
+fix_data_dir.sh: old files are kept in data/musan_noise/.backup
+steps_xvec/preprocess_audios_for_nnet_train.sh --nj 10 --cmd queue.pl --mem 4G -l hostname="[bc][01]*" -V --storage_name voxceleb-v1.1-04_24_15_24 data/musan_noise data/musan_noise_proc_audio exp/musan_noise_proc_audio
+steps_xvec/preprocess_audios_for_nnet_train.sh: Succeeded processing audios for musan_noise
+fix_data_dir.sh: kept all 930 utterances.
+fix_data_dir.sh: old files are kept in data/musan_noise_proc_audio/.backup
+steps_xvec/preprocess_audios_for_nnet_train.sh --nj 10 --cmd queue.pl --mem 4G -l hostname="[bc][01]*" -V --storage_name voxceleb-v1.1-04_24_15_27 data/musan_music data/musan_music_proc_audio exp/musan_music_proc_audio
+steps_xvec/preprocess_audios_for_nnet_train.sh: Succeeded processing audios for musan_music
+fix_data_dir.sh: kept all 645 utterances.
+fix_data_dir.sh: old files are kept in data/musan_music_proc_audio/.backup
+steps_xvec/make_babble_noise_for_nnet_train.sh --cmd queue.pl --mem 4G -l hostname="[bc][01]*" -V --storage_name voxceleb-v1.1-04_24_15_29 data/musan_speech data/musan_speech_babble exp/musan_speech_babble
+steps_xvec/make_babble_noise_for_nnet_train.sh: Succeeded making babble noise for musan_speech
+./run_003_prepare_noises_rirs.sh: line 45: ta/musan_speech: No such file or directory
+
 
 DAMI - WORKING THRU ISSUES
+
+Running cells with 'Python 3.8.12 ('hyperion00')' requires ipykernel package.
+Run the following command to install 'ipykernel' into the Python environment. 
+Command: 'conda install -n hyperion00 ipykernel --update-deps --force-reinstall'
 
 # DAMI - TODO: Done
 # - run_002_compute_evad.sh
@@ -18,22 +54,22 @@ Installing collected packages: numpy, torch, fairscale, hyperion-ml
     Found existing installation: numpy 1.21.2
 
 
-
-
 DAMI - TODO: work from here for now
 (hyperion00) dkazeem@c01:/export/c01/dkazeem/hyperion/egs/voxceleb/vctk$ 
 
 you just need to copy the voceleb recipe
-9:52
+
 change the data preparation scripts which are called in the step 001
-9:53
-and then change the dataset names that are used in step 2, 10, 11, since you will be training on vctk and not in voxceleb
-9:53
+
+and then change the dataset names that are used in step 2, 10, 11, 
+since you will be training on vctk and not in voxceleb
+
 and you will aslo need to change the step 40
-9:54
+
 you will change the PLDA evaluation, which is used for verification task by something diffferent more suitable for a classification task
-9:55
+
 but from step 1 to 30, it all almost the same as in the voxceleb
+
 
 under local/
 

@@ -48,7 +48,9 @@ if [ $stage -le 2 ];then
   	# to go through #'s from 0 to n-1 kfolds. first, this test run.
 	
 	# for name in vctk_0_train vctk_0_test
-	for name in 0/train 0/test
+	# DAMI: this works
+	# for name in $train $validation $test
+	for name in 0/train 0/validation 0/test
     do
 	num_spk=$(wc -l data/$name/spk2utt | awk '{ print $1}')
 	nj=$(($num_spk < 40 ? $num_spk:40))

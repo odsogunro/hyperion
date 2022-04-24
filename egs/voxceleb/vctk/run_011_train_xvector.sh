@@ -33,7 +33,8 @@ if [ "$use_tb" == "true" ];then
     args="$args --use-tensorboard"
 fi
 if [ "$use_wandb" == "true" ];then
-    args="$args --use-wandb --wandb.project voxceleb-v1.1 --wandb.name $nnet_name.$(date -Iminutes)"
+    # args="$args --use-wandb --wandb.project voxceleb-v1.1 --wandb.name $nnet_name.$(date -Iminutes)"
+    args="$args --use-wandb --wandb.project vctk --wandb.name $nnet_name.$(date -Iminutes)"
 fi
 
 if [ "$interactive" == "true" ];then
