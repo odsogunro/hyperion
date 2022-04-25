@@ -9,7 +9,9 @@ set -e
 
 stage=1
 config_file=default_config.sh
-use_gpu=false
+# DAMI - TODO: reset to false is required
+# use_gpu=false
+use_gpu=true
 xvec_chunk_length=12800
 . parse_options.sh || exit 1;
 . $config_file
@@ -30,7 +32,7 @@ if [ $stage -le 1 ]; then
 	for name in 0/train
     do
 	if [ $plda_num_augs -eq 0 ]; then
-    	    steps_xvec/extract_xvectors_from_wav.sh --cmd "$xvec_cmd" --nj 100 ${xvec_args} \
+    	steps_xvec/extract_xvectors_from_wav.sh --cmd "$xvec_cmd" --nj 100 ${xvec_args} \
 		--random-utt-length true --min-utt-length 400 --max-utt-length 14000 \
 		--feat-config $feat_config \
     		$nnet data/${name} \
