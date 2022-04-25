@@ -23,8 +23,8 @@ nnet_data=$train
 nnet_num_augs=6
 aug_opt="--train-aug-cfg conf/reverb_noise_aug.yaml --val-aug-cfg conf/reverb_noise_aug.yaml"
 
-batch_size_1gpu=128
-eff_batch_size=512 # effective batch size
+batch_size_1gpu=64 # batch size default is 128. DAMI-TODO: changed to 64
+eff_batch_size=512 # effective batch size default is 512. Should I change the reduce effective batch size?
 ipe=$nnet_num_augs
 min_chunk=4
 max_chunk=4

@@ -10,8 +10,8 @@ set -e
 stage=1
 config_file=default_config.sh
 # DAMI - TODO: reset to false is required
-# use_gpu=false
-use_gpu=true
+use_gpu=false
+# use_gpu=true
 xvec_chunk_length=12800
 . parse_options.sh || exit 1;
 . $config_file
