@@ -10,7 +10,7 @@ set -e
 stage=1
 # DAMI - TODO: set gpu usage accordingly - default was 4, recommended is 1 for this task
 # ngpu=4
-ngpu=1
+ngpu=1 
 config_file=default_config.sh
 resume=false
 interactive=false

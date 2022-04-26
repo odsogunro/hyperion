@@ -49,7 +49,8 @@ nnet_name=${feat_type}_${nnet_type}_e${embed_dim}_arcs${s}m${margin}_do${dropout
 # DAMI - TODO: set to 1 for now
 nnet_num_epochs=1 # 70
 nnet_dir=exp/xvector_nnets/$nnet_name
-nnet=$nnet_dir/model_ep0070.pth
+# nnet=$nnet_dir/model_ep0070.pth
+nnet=$nnet_dir/model_ep0001.pth
 
 
 # back-end

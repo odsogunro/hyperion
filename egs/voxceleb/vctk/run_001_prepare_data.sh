@@ -23,6 +23,12 @@ if [ $stage -le 1 ];then
   # Prepare the VCTK dataset for training.
   # DAMI - TODO: need to update this to data/#/train with a loop 
   # to go through #'s from 0 to n-1 kfolds. first, this test run.
+  # DAMI - TODO: something along these lines is required.
+  # - QUESTION: is this the most appropriate place for this?
+  # local/make_vctk.py $vctk_root dev 16 
+  # for i in {1..5}; do
+  #   data/i/train
+  # done
   local/make_vctk.py $vctk_root dev 16 data/0/train
 fi
 
