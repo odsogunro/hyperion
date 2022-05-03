@@ -63,6 +63,7 @@ if [ $stage -le 1 ]; then
     exit 1
   fi
   
+  # DAMI - TODO: see hyp_utils directory
   mkdir -p $nnet_dir/log
   $cuda_cmd \
     --gpu $ngpu $nnet_dir/log/train.log \

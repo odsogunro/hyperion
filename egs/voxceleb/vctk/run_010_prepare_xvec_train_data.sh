@@ -30,6 +30,7 @@ if [ $stage -le 2 ]; then
 
 fi
 
+# DAMI - TODO: see hyp_utils directory
 if [ $stage -le 3 ]; then
     # Now, we remove files with less than 4s
     hyp_utils/remove_short_audios.sh --min-len 4 data/${nnet_data}_proc_audio_no_sil

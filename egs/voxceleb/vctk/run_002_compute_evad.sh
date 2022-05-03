@@ -50,6 +50,7 @@ if [ $stage -le 2 ];then
 	# for name in vctk_0_train vctk_0_test
 	# DAMI: this works
 	# for name in $train $validation $test
+	# TODO - should spk2utt be in do .. done section be updated to spk2accent?
 	for name in 0/train 0/validation 0/test
     do
 	num_spk=$(wc -l data/$name/spk2utt | awk '{ print $1}')
