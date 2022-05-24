@@ -33,10 +33,8 @@ if [ $stage -le 1 ]; then
 				$xvector_dir/$plda_data/xvector.scp \
 				data/$plda_data \
 				$be_dir &
-
-
     wait
-
+	
 fi
 
 

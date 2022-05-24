@@ -29,10 +29,22 @@ if [ $stage -le 1 ];then
   # for i in {1..5}; do
   #   data/i/train
   # done
-  local/make_vctk.py $vctk_root dev 16 data/0/train
+
+  # v0.0
+  # local/make_vctk.py $vctk_root dev 16 data/0/train
+  
+  # v0.1
+  local/make_vctk_v01.py $vctk_root dev 16 data/0/train
+
+
+  # DAMI - TODO: UPDATE
+  # for i in {1..5}; do
+  #   echo ${i}
+	# 	local/make_vctk.py $vctk_root dev 16 data/${i}/train
+	# done
 fi
 
-if [ $stage -le 2 ];then
+# if [ $stage -le 2 ];then
   # prepare voxceleb1 for test
   # This script is for the old version of the dataset
   # local/make_voxceleb1_oeh.pl $voxceleb1_root data
@@ -40,4 +52,4 @@ if [ $stage -le 2 ];then
   
   # DAMI - removed this from running
   # local/make_voxceleb1_v2_oeh.pl $voxceleb1_root data
-fi
+# fi

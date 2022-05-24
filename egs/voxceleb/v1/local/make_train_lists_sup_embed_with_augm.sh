@@ -6,6 +6,8 @@ output_dir=$2
 mkdir -p $output_dir
 
 u2s=$list_dir/utt2spk
+# DAMI - TODO: utterance to accent
+# u2s=$list_dir/utt2accent
 u2c=$output_dir/augm2clean.scp
 
 echo "$0 [info] creating lists in $output_dir"

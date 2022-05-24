@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# chmod +x make_vctk.py
+# chmod +x make_vctk_v01.py
 # date: 2022 spring - 20220422
 # author: olorundamilola 'dami' kazeem
 
@@ -98,7 +98,11 @@ def make_utt2spk(wav_files_dir, spk_info_df, file_path="utt2spk"):
 # make_utt2spk(test_dir, test_spkr_info)
 
 
-def make_utt2accent(wav_files_dir, spk_info_df, file_path="utt2accent"):
+def make_utt2accent(
+    wav_files_dir, 
+    spk_info_df, 
+    file_path="utt2accent"):
+
     utt2accent_file = pl.Path(file_path)
     
     # # TODO - ASAP: need to convert speaker info to dataframe
@@ -204,7 +208,7 @@ def data_split_stratified_kfold(
     # skf = skf.split(X, y)
     
     test_val_percent = validation_percent + test_percent
-    t(n_splits=k_num_splits, test_size=test_val_percent, random_state=einsof)
+    skf = skms.StratifiedShuffleSplit(n_splits=k_num_splits, test_size=test_val_percent, random_state=einsof)
     skf = skf.split(X, y)
 
     for i, (train_index, val_and_test_index) in enumerate(skf):
@@ -465,6 +469,13 @@ def data_split_stratified_train_test(
 #     k_num_splits=1
 #     )
 
+###
+# this points to 
+# - run_010_prepare
+#  
+# - 
+#
+###
 
 def main():
     # directories
@@ -475,31 +486,45 @@ def main():
     wave_files = "/wav48"
     current_dir = "."
 
-    # files
-    test_wav = sorted(gl.glob(vctk_root + wave_files + all + all))
-    test_dir = sorted(gl.glob(vctk_root + wave_files + all))
+    train_validation_split = "/data/0/train_proc_audio_no_sil"
+    train_validation_split_output = "/data/0/train_proc_audio_no_sil/lists_xvec"
 
-    # pre-prcessing of files 
-    # TODO: resolve - ParserError: Error tokenizing data. C error: Expected 5 fields in line 89, saw 6
-    # Skipping line 89: Expected 5 fields in line 89, saw 6. Error could possibly be due to quotes being ignored when a multi-char delimiter is used.
-    #   ID AGE GENDER ACCENTS REGION
-    #   326 26 M Australian English Sydney
-    test_spkr_info = pd.read_csv(
-        vctk_root + speaker_info, delimiter="\s+", error_bad_lines=False, engine="python"
-    )
+    
 
-    test_spkr_info_stats = test_spkr_info.info()
-    test_spkr_info_accent_cnts = test_spkr_info['ACCENTS'].value_counts()
-    ignore = ['SouthAfrican', 'Indian', 'Welsh', 'EnglishSE', 'Australian', 'EnglishSurrey', 'NewZealand']
-    test_spkr_info = test_spkr_info.query('ACCENTS != (@ignore)')
+    # # files
+    # test_wav = sorted(gl.glob(vctk_root + wave_files + all + all))
+    # test_dir = sorted(gl.glob(vctk_root + wave_files + all))
 
-    test_skf = data_split_stratified_kfold(
+    # # pre-prcessing of files 
+    # # TODO: resolve - ParserError: Error tokenizing data. C error: Expected 5 fields in line 89, saw 6
+    # # Skipping line 89: Expected 5 fields in line 89, saw 6. Error could possibly be due to quotes being ignored when a multi-char delimiter is used.
+    # #   ID AGE GENDER ACCENTS REGION
+    # #   326 26 M Australian English Sydney
+    # test_spkr_info = pd.read_csv(
+    #     vctk_root + speaker_info, delimiter="\s+", error_bad_lines=False, engine="python"
+    # )
+
+    # test_spkr_info_stats = test_spkr_info.info()
+    # test_spkr_info_accent_cnts = test_spkr_info['ACCENTS'].value_counts()
+    # ignore = ['SouthAfrican', 'Indian', 'Welsh', 'EnglishSE', 'Australian', 'EnglishSurrey', 'NewZealand']
+    # test_spkr_info = test_spkr_info.query('ACCENTS != (@ignore)')
+
+    # test_skf = data_split_stratified_kfold(
+    #     spk_dataframe=test_spkr_info, 
+    #     wav_files=test_wav, 
+    #     wav_dirs=test_dir, 
+    #     stratify_using="ACCENTS",
+    #     train_percent=0.8, # use hyperion to split into train and validation - later in STEP 10
+    #     validation_percent=0.0,
+    #     test_percent=0.2, 
+    #     k_num_splits=1) # doing one split for running hyperion pipeline
+
+    test_skf = data_split_stratified_train_test(
         spk_dataframe=test_spkr_info, 
         wav_files=test_wav, 
         wav_dirs=test_dir, 
         stratify_using="ACCENTS",
         train_percent=0.8, # use hyperion to split into train and validation - later in STEP 10
-        validation_percent=0.0,
         test_percent=0.2, 
         k_num_splits=1) # doing one split for running hyperion pipeline
 

@@ -51,15 +51,29 @@ if [ $stage -le 2 ];then
 	# DAMI: this works
 	# for name in $train $validation $test
 	# TODO - should spk2utt be in do .. done section be updated to spk2accent?
-	for name in 0/train 0/validation 0/test
+	# for name in 0/train 0/validation 0/test
+	for name in 0/train 0/test
     do
 	num_spk=$(wc -l data/$name/spk2utt | awk '{ print $1}')
-	nj=$(($num_spk < 40 ? $num_spk:40))
+	# nj=$(($num_spk < 40 ? $num_spk:40))
+	nj=$(($num_spk < 100 ? $num_spk:100))
 	hyp_utils/feats/make_evad.sh --write-utt2num-frames true \
 	    --vad-config $vad_config --nj $nj --cmd "$train_cmd" \
 	    data/${name} exp/make_vad/$name $vaddir
 	utils/fix_data_dir.sh data/${name}
     done
+
+	# UPDATE
+	# for i in {1..5}; do
+	# 	for name in i/train i/validation i/test; do
+	# 		num_spk=$(wc -l data/$name/spk2utt | awk '{ print $1}')
+	# 		nj=$(($num_spk < 40 ? $num_spk:40))
+	# 		hyp_utils/feats/make_evad.sh --write-utt2num-frames true \
+	# 			--vad-config $vad_config --nj $nj --cmd "$train_cmd" \
+	# 			data/${name} exp/make_vad/$name $vaddir
+	# 		utils/fix_data_dir.sh data/${name}
+	# 	done
+	# done
 fi
 
 
