@@ -50,6 +50,8 @@ def eval_classif_perf(score_file, key_file, class_file, output_path=None, **kwar
 
     y_pred = np.argmax(y, axis=1)
     acc = compute_accuracy(y_true, y_pred)
+    # DAMI - TODO: made a change 
+    # acc = compute_accuracy(y_true, y_pred, normalize=True, sample_weight=None)
     logging.info("Classification accuracy %.2f %%" % (acc * 100))
 
     labels = np.arange(len(classes), dtype=np.int)
