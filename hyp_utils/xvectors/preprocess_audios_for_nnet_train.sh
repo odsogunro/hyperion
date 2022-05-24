@@ -68,8 +68,9 @@ if [[ $(hostname -f) == *.clsp.jhu.edu ]] && [ ! -d $output_dir/storage ]; then
     done
 fi
 
-
-for f in utt2spk spk2utt wav.scp utt2lang spk2gender
+# DAMI - TODO HERE: 
+for f in utt2spk spk2utt wav.scp utt2accent
+# for f in utt2spk spk2utt wav.scp utt2lang spk2gender
 do
     if [ -f $data_in/$f ];then
 	cp $data_in/$f $data_out/$f
