@@ -142,7 +142,7 @@ class_loc=data/0/test_proc_audio_no_sil/lists_xvec
 # if [ $stage -le 4 ];then
 if [ $stage -le 2 ]; then
     # echo "Eval signature network logits on test attacks"
-    echo "Eval signature accent logits on test accents"
+    echo "STEP 02: Eval signature accent logits on test accents"
     nj=100
     steps_xvec/eval_xvec_logits_from_wav.sh \
 	--cmd "$xvec_cmd --mem 6G" --nj $nj ${xvec_args} --use-bin-vad false \
@@ -163,7 +163,7 @@ class_file=${class_loc}/class2int
 
 if [ $stage -le 3 ];then
 
-    echo "Compute cofusion matrices"
+    echo "STEP 03: Compute cofusion matrices"
     # echo "Result is left in $logits_dir/voxceleb1_test/eval_acc.log"
     echo "Result is left in $logits_dir/vctk_test/eval_acc.log"
     echo "SCORE FILE: $score_file"
